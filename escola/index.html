@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Estadual do Castro Alves - Cívico-Militar</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #8b0000;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://p1news.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-10-at-11.11.43.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Sobre */
+        .sobre {
+            background-color: white;
+        }
+        
+        .sobre-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .sobre-text {
+            flex: 1;
+        }
+        
+        .sobre-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sobre-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Diferenciais */
+        .diferenciais {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://sindutemg.org.br/wp-content/uploads/2025/07/capa-noticia.png') no-repeat center center/cover;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .diferencial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .diferencial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .diferencial-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* Galeria */
+        .galeria {
+            background-color: white;
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .galeria-item {
+            height: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Depoimentos */
+        .depoimentos {
+            background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), url('https://www.al.sp.gov.br/repositorio/noticia/N-04-2025/fg344126.jpeg') no-repeat center center/cover;
+        }
+        
+        .depoimentos-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .depoimento {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .depoimento-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .depoimento-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .depoimento-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .depoimento-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .depoimento-info p {
+            color: #666;
+            margin: 0;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-top: 5px;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(rgba(26, 95, 122, 0.9), rgba(139, 0, 0, 0.9)), url('https://s2-g1.glbimg.com/V4fA4LNTzcpKderdOn65hrVcD1Y=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/i/d/SkIKUmQcO34ymnJOgZjw/escola-militar-12-10-20.mov-snapshot-00.46-2020.10.12-16.30.31-.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .sobre-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">EE Castro Alves</a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato" class="btn">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Escola Estadual do Castro Alves</h1>
+            <p>Educação de qualidade com disciplina, civismo e valores patrióticos</p>
+            <a href="#sobre" class="btn">Conheça Nossa Escola</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h2>Sobre Nossa Escola</h2>
+                    <p>A Escola Estadual do Castro Alves, agora no modelo cívico-militar, tem uma história de mais de 40 anos dedicados à educação de qualidade. Localizada em um ambiente acolhedor e seguro, nossa escola oferece uma formação integral que prepara os estudantes para os desafios do mundo contemporâneo.</p>
+                    <p>Como escola cívico-militar, nossa missão é proporcionar uma educação que desenvolva não apenas o conhecimento acadêmico, mas também valores éticos, disciplina, civismo e o pensamento crítico, formando cidadãos conscientes, patriotas e responsáveis.</p>
+                    <a href="#diferenciais" class="btn">Nossos Diferenciais</a>
+                </div>
+                <div class="sobre-img">
+                    <img src="https://jornaldoes.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-06-at-13.55.15-1.jpeg" alt="Escola Estadual do Castro Alves">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="diferenciais" class="diferenciais">
+        <div class="container">
+            <h2 class="section-title">Nossos Diferenciais</h2>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">🎖️</div>
+                    <h3>Modelo Cívico-Militar</h3>
+                    <p>Educação baseada em disciplina, hierarquia, civismo e valores patrióticos que formam cidadãos de caráter.</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">📚</div>
+                    <h3>Corpo Docente Qualificado</h3>
+                    <p>Nossos professores são altamente capacitados e comprometidos com o desenvolvimento integral dos estudantes.</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">🔬</div>
+                    <h3>Infraestrutura Moderna</h3>
+                    <p>Laboratórios de ciências, informática, biblioteca atualizada e espaços esportivos completos.</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon">🎯</div>
+                    <h3>Formação de Valores</h3>
+                    <p>Desenvolvimento de disciplina, responsabilidade, respeito e amor à pátria através de atividades cívicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2 class="section-title">Nossa Escola em Imagens</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="https://jornaldoes.com.br/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-06-at-13.55.15-1.jpeg" alt="Formação cívica">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://sindutemg.org.br/wp-content/uploads/2025/07/capa-noticia.png" alt="Atividades militares">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://www.al.sp.gov.br/repositorio/noticia/N-04-2025/fg344126.jpeg" alt="Laboratório">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://agenciaminas.mg.gov.br/system/news/images/000/118/174/original/WhatsApp_Image_2022-09-06_at_14.29.39_%281%29.jpeg?1689281075" alt="Área esportiva">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://s2-g1.glbimg.com/V4fA4LNTzcpKderdOn65hrVcD1Y=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/i/d/SkIKUmQcO34ymnJOgZjw/escola-militar-12-10-20.mov-snapshot-00.46-2020.10.12-16.30.31-.jpg" alt="Estudantes">
+                </div>
+                <div class="galeria-item">
+                    <img src="https://p1news.com.br/wp-content/uploads/2023/01/WhatsApp-Image-2023-01-10-at-11.11.43.jpeg" alt="Atividade cívica">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O Que Dizem Sobre Nós</h2>
+            <div class="depoimentos-container">
+                <div class="depoimento">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Maria Silva">
+                        </div>
+                        <div class="depoimento-info">
+                            <h4>Maria Silva</h4>
+                            <p>Mãe de aluno</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Minha filha estuda há 3 anos na Escola Castro Alves e estou muito satisfeita com a educação que recebe. Desde que se tornou cívico-militar, notei uma grande melhora na disciplina e responsabilidade dela. Os professores são dedicados e a escola oferece uma estrutura excelente."</p>
+                </div>
+                
+                <div class="depoimento">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João Santos">
+                        </div>
+                        <div class="depoimento-info">
+                            <h4>João Santos</h4>
+                            <p>Ex-aluno</p>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Estudei na Castro Alves durante todo o ensino médio e posso dizer que foi fundamental para minha formação. A disciplina e os valores que aprendi me prepararam não só para a faculdade, mas para a vida. Hoje, como universitário, vejo o quanto a escola me ajudou a desenvolver caráter e responsabilidade."</p>
+                </div>
+                
+                <div class="depoimento">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana Costa">
+                        </div>
+                        <div class="depoimento-info">
+                            <h4>Ana Costa</h4>
+                            <p>Professora</p>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p>"Trabalho há 5 anos na Escola Castro Alves e posso afirmar que a transição para o modelo cívico-militar trouxe muitos benefícios. Temos mais estrutura, os alunos estão mais focados e disciplinados, e podemos implementar projetos pedagógicos significativos que desenvolvem não só o conhecimento, mas também o caráter."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Venha Conhecer Nossa Escola</h2>
+            <p>Agende uma visita e descubra por que a Escola Estadual do Castro Alves no modelo cívico-militar é a melhor escolha para a educação do seu filho.</p>
+            <a href="#contato" class="btn">Entre em Contato</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Escola Castro Alves</h3>
+                    <p>Educação de qualidade com disciplina, civismo e valores patrióticos. Formando cidadãos conscientes e preparados para o futuro.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><strong>Endereço:</strong> Rua Exemplo, 123 - Bairro Centro</li>
+                        <li><strong>Telefone:</strong> (11) 1234-5678</li>
+                        <li><strong>Email:</strong> contato@eecastroalves.edu.br</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Horário de Funcionamento</h3>
+                    <ul class="footer-links">
+                        <li>Segunda a Sexta: 7h às 18h</li>
+                        <li>Sábado: 8h às 12h (atividades cívico-militares)</li>
+                        <li>Domingo: Fechado</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Escola Estadual do Castro Alves. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header fixo com efeito de sombra ao rolar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
